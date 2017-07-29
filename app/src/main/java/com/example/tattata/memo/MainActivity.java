@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonSave = (Button)findViewById(R.id.buttonSave);
+        Button buttonCancel = (Button)findViewById(R.id.buttonCancel);
+
         editText = (EditText)findViewById(R.id.editText);
         pref = getSharedPreferences("memoPref", MODE_PRIVATE);
 
@@ -34,15 +36,17 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("memo", editText.getText().toString());
                 editor.commit();
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    finishAndRemoveTask();
-                } else {
-                    finish();
-                }
+                finishApp();
+            }
+        });
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               finishApp();
             }
         });
 
-        editText.setBackgroundColor(Color.LTGRAY);
+        editText.setBackgroundColor(Color.rgb(245, 245, 220));
         editText.setText(pref.getString("memo", ""));
     }
 
@@ -64,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
 
+        }
+    }
+    public void finishApp() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        } else {
+            finish();
         }
     }
 }

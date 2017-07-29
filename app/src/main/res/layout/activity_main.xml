@@ -20,17 +20,26 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
         android:layout_marginTop="60dp"
         android:ems="15"
-        android:gravity="top|left"
+        android:gravity="top|start"
         android:inputType="textMultiLine"
         android:maxLines="18"
         android:minLines="18"
         android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonSave"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:text="CANCEL" />
 
 </RelativeLayout>
