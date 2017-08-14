@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -11,12 +12,12 @@
     tools:context="com.example.tattata.memo.MainActivity">
 
     <Button
-        android:text="save"
+        android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonSave"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="save" />
 
     <EditText
         android:id="@+id/editText"
@@ -41,5 +42,14 @@
         android:layout_alignEnd="@+id/editText"
         android:layout_alignRight="@+id/editText"
         android:text="CANCEL" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_btn_speak_now"
+        android:layout_alignBottom="@+id/buttonSave"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
