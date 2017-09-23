@@ -1,6 +1,7 @@
 package com.example.tattata.memo;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -76,10 +77,14 @@ public class MainActivity extends AppCompatActivity {
         buttonVoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "音声を入力");
-                startActivityForResult(intent, REQUEST_CODE_VOICE);
+                try {
+                    Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "音声を入力");
+                    startActivityForResult(intent, REQUEST_CODE_VOICE);
+                } catch (ActivityNotFoundException ane) {
+                    Toast.makeText(getApplicationContext(), "音声認識機能が存在しないか無効になっています。", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
